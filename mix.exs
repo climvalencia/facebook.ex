@@ -3,6 +3,8 @@ Code.ensure_loaded?(Hex) and Hex.start()
 defmodule Facebook.Mixfile do
   use Mix.Project
 
+  @support_native_json Version.match?(System.version(), ">= 1.18.0")
+
   def project do
     [
       app: :facebook,
@@ -19,7 +21,7 @@ defmodule Facebook.Mixfile do
   def application do
     [
       mod: {Facebook, []},
-      applications: [:httpoison, :json, :logger],
+      applications: applications(@support_native_json),
       env: [
         env: :dev,
         graph_url: "https://graph.facebook.com",
@@ -32,6 +34,9 @@ defmodule Facebook.Mixfile do
       ]
     ]
   end
+
+  defp applications(true), do: [:httpoison, :logger]
+  defp applications(_), do: [:httpoison, :json, :logger]
 
   defp description do
     """
@@ -54,8 +59,7 @@ defmodule Facebook.Mixfile do
   end
 
   defp deps do
-    [
-      {:json, ">= 1.2.5"},
+    deps_json(@support_native_json) ++ [
       {:httpoison, "~> 1.4"},
       {:mock, "~> 0.3.2", only: :test},
       {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},
@@ -63,4 +67,7 @@ defmodule Facebook.Mixfile do
       {:ex_doc, ">= 0.19.2", only: :dev}
     ]
   end
+
+  defp deps_json(true), do: []
+  defp deps_json(_), do: [{:json, ">= 1.2.5"}]
 end
