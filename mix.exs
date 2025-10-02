@@ -60,7 +60,7 @@ defmodule Facebook.Mixfile do
 
   defp deps do
     deps_json(@support_native_json) ++ [
-      {:httpoison, "~> 1.4"},
+      {:httpoison, "~> 2.2"},
       {:mock, "~> 0.3.2", only: :test},
       {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
