@@ -19,7 +19,7 @@ defmodule Facebook.Mixfile do
   def application do
     [
       mod: {Facebook, []},
-      applications: [:httpoison, :json, :logger],
+      extra_applications: [:logger],
       env: [
         env: :dev,
         graph_url: "https://graph.facebook.com",
