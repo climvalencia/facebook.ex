@@ -1,3 +1,3 @@
-Code.load_file("test/graph_mock.ex")
+Code.compile_file("test/graph_mock.ex")
 
 ExUnit.start()
