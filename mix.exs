@@ -7,7 +7,7 @@ defmodule Facebook.Mixfile do
     [
       app: :facebook,
       version: "0.24.0",
-      elixir: "~> 1.10",
+      elixir: "~> 1.13",
       description: description(),
       package: package(),
       deps: deps(),
@@ -59,7 +59,7 @@ defmodule Facebook.Mixfile do
       {:httpoison, "~> 1.4"},
       {:mock, "~> 0.3.2", only: :test},
       {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.19.2", only: :dev}
     ]
   end
