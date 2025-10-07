@@ -824,7 +824,7 @@ defmodule Facebook do
          {:ok, signature} <- Base.url_decode64(signature_str),
          _signature_verification = ^signature <- signature(payload_str),
          {:ok, payload} <- Base.url_decode64(payload_str),
-         {:ok, payload} <- JSON.decode(payload) do
+         {:ok, payload} <- Jason.decode(payload) do
       {:ok, payload}
     else
       _ -> {:error, %{}}

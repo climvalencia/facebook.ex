@@ -534,7 +534,7 @@ defmodule FacebookTest do
     end
 
     test "payload" do
-      payload = JSON.encode!(%{id: @payment_id})
+      payload = Jason.encode!(%{id: @payment_id})
 
       assert "EdOhTfnZaIM3-Ht7X_4vgEQnIRq9fpzRgONlMvwRGKI=.eyJpZCI6IjExNjM5NzMwMzg2NTk2In0=" =
                Facebook.sign(payload)

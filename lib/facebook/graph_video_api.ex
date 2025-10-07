@@ -7,5 +7,5 @@ defmodule Facebook.GraphVideoAPI do
 
   def process_url(url), do: Config.graph_video_url() <> url
 
-  def process_response_body(body), do: JSON.decode(body)
+  def process_response_body(body), do: Jason.decode(body)
 end
